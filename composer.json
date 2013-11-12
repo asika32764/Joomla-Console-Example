@@ -1,0 +1,24 @@
+{
+	"name"             : "asika/console-example",
+	"description"      : "Console Example",
+	"minimum-stability": "dev",
+	"authors"          : [
+		{
+			"name" : "asika",
+			"email": "asika@asikart.com"
+		}
+	],
+	"require": {
+		"joomla/framework": "1.0-beta3"
+	}
+	,
+	"autoload" : {
+		"psr-0" : {
+			"Joomla" : "src"
+		}
+		,
+		"files": [
+			"src/Joomla/PHP/methods.php"
+		]
+	}
+}
