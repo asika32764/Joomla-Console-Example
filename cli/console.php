@@ -26,8 +26,6 @@ $ foo bar yoo -q => foo bar yoo --quiet
 HELP
 	)*/;
 
-// CommandHelper::loadFirstLevelCommnads($console);
-
-$console->addCommand(new \Command\ExampleCommand);
+CommandHelper::loadFirstLevelCommnads($console);
 
 $console->execute();

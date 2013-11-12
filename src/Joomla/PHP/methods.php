@@ -100,9 +100,14 @@ function printRLevel($data, $level = 5)
 			$output .= "\n{$quoteTabes}*MAX LEVEL*\n";
 		}
 	}
+	else
+	{
+		$output = $data;
+	}
 
 	return $output;
 }
+
 
 if (!function_exists('show'))
 {
@@ -120,9 +125,18 @@ if (!function_exists('show'))
 	{
 		$args = func_get_args();
 
-		$level = array_pop($args);
+		$last = array_pop($args);
 
-		$level = is_int($level) ? $level : 4;
+		if (is_int($last))
+		{
+			$level = $last;
+		}
+		else
+		{
+			$level = 4;
+
+			$args[] = $last;
+		}
 
 		// Dump Multiple values
 		if (count($args) > 1)
