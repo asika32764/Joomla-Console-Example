@@ -19,7 +19,7 @@ abstract class CommandHelper
 			}
 
 			$class = 'Command\\' . $file->getBasename('.php');
-			
+
 			if (class_exists($class))
 			{
 				$console->addCommand(new $class);
