@@ -3,6 +3,7 @@
 // Load the Composer autoloader
 include __DIR__ . '/../vendor/autoload.php';
 
+use Helper\CommandHelper;
 use Joomla\Console\Console;
 use Joomla\Console\Output\Stdout;
 
@@ -24,5 +25,7 @@ $ foo bar -h => foo bar --help
 $ foo bar yoo -q => foo bar yoo --quiet
 HELP
 	)*/;
+
+CommandHelper::loadFirstLevelCommnads($console);
 
 $console->execute();
