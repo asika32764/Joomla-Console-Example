@@ -2,25 +2,30 @@
 
 namespace Helper;
 
+/**
+ * Class CommandHelper
+ *
+ * @since 1.0
+ */
 abstract class CommandHelper
 {
 	static public function loadFirstLevelCommnads($console)
 	{
-		$dir = dirname(__DIR__) . '/Command';
+		$path = dirname(__DIR__) . '/Command';
 
-		$files = new \FilesystemIterator($dir);
+		$dirs = new \FilesystemIterator($path);
 
-		foreach ($files as $file)
+		foreach ($dirs as $dir)
 		{
 			/** @var $file \SplFileInfo */
-			if ($file->isDir())
+			if ($dir->isFile())
 			{
 				continue;
 			}
 
-			$class = 'Command\\' . $file->getBasename('.php');
+			$class = 'Command\\' . $dir->getBasename() . '\\' . $dir->getBasename() . 'Command';
 
-			if (class_exists($class))
+			if (class_exists($class) && is_subclass_of($class, '\\Joomla\\Console\\Command\\Command') && $class::$isEnabled)
 			{
 				$console->addCommand(new $class);
 			}
